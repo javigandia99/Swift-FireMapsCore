@@ -9,5 +9,6 @@ target 'Swift_FireMapsCore_JGC' do
   pod 'Firebase'
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'GoogleSignIn'
 
 end
