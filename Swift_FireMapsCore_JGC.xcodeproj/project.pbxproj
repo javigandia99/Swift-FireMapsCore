@@ -15,6 +15,7 @@
 		1D5F96A9238F0591001A35B5 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F96A8238F0591001A35B5 /* MapsViewController.swift */; };
 		1D5F96AB238F05AB001A35B5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F96AA238F05AB001A35B5 /* RegisterViewController.swift */; };
 		1D5F96AD238F0B6F001A35B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D5F96AC238F0B6F001A35B5 /* GoogleService-Info.plist */; };
+		1D66C35C2394537800D86B3D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D66C35B2394537800D86B3D /* Constants.swift */; };
 		E95608CAE52D166CC708F270 /* Pods_Swift_FireMapsCore_JGC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D319732F8FC30E4163D7BE3 /* Pods_Swift_FireMapsCore_JGC.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		1D5F96A8238F0591001A35B5 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		1D5F96AA238F05AB001A35B5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1D5F96AC238F0B6F001A35B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Swift_FireMapsCore_JGC/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1D66C35B2394537800D86B3D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EC556F95FB4C52DE6F715543 /* Pods-Swift_FireMapsCore_JGC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift_FireMapsCore_JGC.debug.xcconfig"; path = "Target Support Files/Pods-Swift_FireMapsCore_JGC/Pods-Swift_FireMapsCore_JGC.debug.xcconfig"; sourceTree = "<group>"; };
 		F08BB72CE371D63CA32871BD /* Pods-Swift_FireMapsCore_JGC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift_FireMapsCore_JGC.release.xcconfig"; path = "Target Support Files/Pods-Swift_FireMapsCore_JGC/Pods-Swift_FireMapsCore_JGC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +70,7 @@
 		1D5F968D238F0487001A35B5 /* Swift_FireMapsCore_JGC */ = {
 			isa = PBXGroup;
 			children = (
+				1D66C35A2394534B00D86B3D /* Helpers */,
 				1D5F96A4238F0545001A35B5 /* Resources */,
 				1D5F96A3238F0526001A35B5 /* App */,
 				1D5F96A2238F0515001A35B5 /* ViewControllers */,
@@ -142,6 +145,14 @@
 				1D5F96A8238F0591001A35B5 /* MapsViewController.swift */,
 			);
 			path = Maps;
+			sourceTree = "<group>";
+		};
+		1D66C35A2394534B00D86B3D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1D66C35B2394537800D86B3D /* Constants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		25D252349707F7525D5E2110 /* Pods */ = {
@@ -295,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D66C35C2394537800D86B3D /* Constants.swift in Sources */,
 				1D5F96A9238F0591001A35B5 /* MapsViewController.swift in Sources */,
 				1D5F9691238F0487001A35B5 /* LoginViewController.swift in Sources */,
 				1D5F968F238F0487001A35B5 /* AppDelegate.swift in Sources */,

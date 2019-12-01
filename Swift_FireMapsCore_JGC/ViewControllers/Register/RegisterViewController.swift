@@ -8,13 +8,22 @@
 
 
 import UIKit
+import Firebase
 
 class RegisterViewController: UIViewController {
     
+    let db = Firestore.firestore()
+    @IBOutlet weak var gmailTxt: UITextField!
+    @IBOutlet weak var nameTxt: UITextField!
+    @IBOutlet weak var passwordTxt: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
     
-    
+    func makeRegister(){
+        let registerDocument = db.collection("users").document()
+        registerDocument.setData(["gmail":"\(String(describing: gmailTxt.text))","name":"\(String(describing: nameTxt.text))","password":"\(String(describing: passwordTxt.text))"])
+    }
 }
