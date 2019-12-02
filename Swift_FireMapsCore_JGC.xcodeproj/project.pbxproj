@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0B01AE239530E600ED66FC /* Swift_FireMapsCore_JGC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B01AC239530E600ED66FC /* Swift_FireMapsCore_JGC.xcdatamodeld */; };
+		1D0E118423957F5F00AAB940 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0E118323957F5F00AAB940 /* ProfileViewController.swift */; };
 		1D5F968F238F0487001A35B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F968E238F0487001A35B5 /* AppDelegate.swift */; };
 		1D5F9691238F0487001A35B5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F9690238F0487001A35B5 /* LoginViewController.swift */; };
 		1D5F9694238F0487001A35B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D5F9692238F0487001A35B5 /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D0B01AD239530E600ED66FC /* Swift_FireMapsCore_JGC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Swift_FireMapsCore_JGC.xcdatamodel; sourceTree = "<group>"; };
+		1D0E118323957F5F00AAB940 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1D319732F8FC30E4163D7BE3 /* Pods_Swift_FireMapsCore_JGC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift_FireMapsCore_JGC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D5F968B238F0487001A35B5 /* Swift_FireMapsCore_JGC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_FireMapsCore_JGC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D5F968E238F0487001A35B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,9 +52,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D0E118223957F4A00AAB940 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1D0E118323957F5F00AAB940 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		1D5F9682238F0487001A35B5 = {
 			isa = PBXGroup;
 			children = (
+				1D0B01AC239530E600ED66FC /* Swift_FireMapsCore_JGC.xcdatamodeld */,
 				1D5F96AC238F0B6F001A35B5 /* GoogleService-Info.plist */,
 				1D5F968D238F0487001A35B5 /* Swift_FireMapsCore_JGC */,
 				1D5F968C238F0487001A35B5 /* Products */,
@@ -100,6 +113,7 @@
 		1D5F96A2238F0515001A35B5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1D0E118223957F4A00AAB940 /* Profile */,
 				1D5F96A7238F056C001A35B5 /* Maps */,
 				1D5F96A6238F0566001A35B5 /* Register */,
 				1D5F96A5238F0561001A35B5 /* Login */,
@@ -310,6 +324,8 @@
 				1D5F96A9238F0591001A35B5 /* MapsViewController.swift in Sources */,
 				1D5F9691238F0487001A35B5 /* LoginViewController.swift in Sources */,
 				1D5F968F238F0487001A35B5 /* AppDelegate.swift in Sources */,
+				1D0E118423957F5F00AAB940 /* ProfileViewController.swift in Sources */,
+				1D0B01AE239530E600ED66FC /* Swift_FireMapsCore_JGC.xcdatamodeld in Sources */,
 				1D5F96AB238F05AB001A35B5 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,6 +528,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1D0B01AC239530E600ED66FC /* Swift_FireMapsCore_JGC.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1D0B01AD239530E600ED66FC /* Swift_FireMapsCore_JGC.xcdatamodel */,
+			);
+			currentVersion = 1D0B01AD239530E600ED66FC /* Swift_FireMapsCore_JGC.xcdatamodel */;
+			path = Swift_FireMapsCore_JGC.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1D5F9683238F0487001A35B5 /* Project object */;
 }
