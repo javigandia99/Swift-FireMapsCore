@@ -127,12 +127,14 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.10.0)
+  - Toast-Swift (5.0.0)
 
 DEPENDENCIES:
   - Firebase
   - FirebaseAuth
   - FirebaseFirestore
   - GoogleSignIn
+  - Toast-Swift
 
 SPEC REPOS:
   trunk:
@@ -159,6 +161,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
@@ -184,7 +187,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
+  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 4f9bdb0bc29e44b5625ca795c6a945b6fedd7799
+PODFILE CHECKSUM: 4cf6481d895ef332ac878f228e2bcecbf92d2f1a
 
 COCOAPODS: 1.8.0

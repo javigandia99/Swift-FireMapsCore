@@ -8,34 +8,35 @@
 
 import UIKit
 import Firebase
+import Toast_Swift
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var gmailLabel: UILabel!
     
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       //valuesOfFirebase()
+        //valuesOfFirebase()
         
     }
     
     func valuesOfFirebase(){
-       
+        
     }
     
     @IBAction func didTapLogOut(_ sender: UIButton) {
-        //GIDSignIn.sharedInstance().signOut()
-        let firebaseAuth = Auth.auth()
         do {
-            try firebaseAuth.signOut()
-            dismiss(animated: true, completion: nil)
+            try Auth.auth().signOut()
+            
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.loginViewController)
+            let appDelegate = UIApplication.shared.delegate
+            appDelegate?.window??.rootViewController = loginViewController
+            appDelegate?.window??.makeToast("log Out Succesfull!!")
         } catch let signOutError as NSError {
-            print ("Error signing out: \(signOutError.localizedDescription)")
+            print ("Error signing out: %@", signOutError)
         }
     }
-       
 }

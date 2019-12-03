@@ -11,9 +11,14 @@ import Firebase
 import GoogleSignIn
 
 class LoginViewController: UIViewController, GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error != nil {
+            // Couldn't sign in
+            self.showError(error: error!)
+        }
+    }
     
-    // let db = Firestore.firestore()
-    
+   
     @IBOutlet weak var gmailTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
     @IBOutlet weak var googleButton: GIDSignInButton!
@@ -26,34 +31,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         // Automatically sign in the user.
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        
-        if let error = error {
-            
-            self.showError(error: error)
-            
-            return
-        }
-        //User is signed in
-        print("Succesfully logged into Google", user!)
-        guard user.authentication.idToken != nil else { return }
-        guard user.authentication.accessToken != nil else { return }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        
-        Auth.auth().signIn(with: credential, completion: {(user,error) in
-            if error != nil {
-                // Couldn't sign in
-                self.showError(error: error!)
-            }else {
-                //if everything okey go to MapView
-                self.goToMaps()
-            }
-        })
+        GIDSignIn.sharedInstance().delegate = self
     }
     
     @IBAction func loginButton(_ sender: Any) {

@@ -10,5 +10,6 @@ target 'Swift_FireMapsCore_JGC' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'GoogleSignIn'
+  pod 'Toast-Swift'
 
 end
