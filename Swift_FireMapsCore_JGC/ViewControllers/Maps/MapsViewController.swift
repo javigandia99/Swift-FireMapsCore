@@ -27,7 +27,8 @@ class MapsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //goButton.layer.cornerRadius = goButton.frame.size.height/2
+        goButton.layer.cornerRadius = goButton.frame.size.height/2
+        mapView.delegate = self
         checkLocationServices()
     }
     
@@ -52,6 +53,7 @@ class MapsViewController: UIViewController {
             checkLocationAuthorization()
         } else {
             // Show alert letting the user know they have to turn this on.
+            self.showAlert(title: "We need your location authorization", message: "Please turn on to continue")
         }
     }
     
@@ -75,7 +77,6 @@ class MapsViewController: UIViewController {
         }
     }
     
-    
     func startTackingUserLocation() {
         mapView.showsUserLocation = true
         centerViewOnUserLocation()
@@ -83,14 +84,12 @@ class MapsViewController: UIViewController {
         previousLocation = getCenterLocation(for: mapView)
     }
     
-    
     func getCenterLocation(for mapView: MKMapView) -> CLLocation {
         let latitude = mapView.centerCoordinate.latitude
         let longitude = mapView.centerCoordinate.longitude
         
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-    
     
     func getDirections() {
         guard let location = locationManager.location?.coordinate else {
@@ -113,6 +112,9 @@ class MapsViewController: UIViewController {
         }
     }
     
+    @IBAction func goButtonTapped(_ sender: UIButton) {
+        getDirections()
+    }
     
     func createDirectionsRequest(from coordinate: CLLocationCoordinate2D) -> MKDirections.Request {
         let destinationCoordinate = getCenterLocation(for: mapView).coordinate
@@ -128,17 +130,22 @@ class MapsViewController: UIViewController {
         return request
     }
     
-    
     func resetMapView(withNew directions: MKDirections) {
         mapView.removeOverlays(mapView.overlays)
         directionsArray.append(directions)
         let _ = directionsArray.map { $0.cancel() }
     }
     
-    @IBAction func goButtonTapped(_ sender: UIButton) {
-        getDirections()
-    }
+    func showAlert(title:String,message:String){
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    
+    alert.addAction(UIAlertAction(title: "Okey", style: .default, handler: nil))
+    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+    
+    self.present(alert, animated: true)
 }
+}
+
 extension MapsViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
