@@ -26,17 +26,17 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         // Automatically sign in the user.
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         
-        if error != nil {
+        if let error = error {
             
-            self.showError(error: error!)
+            self.showError(error: error)
             
             return
         }
+        //User is signed in
         print("Succesfully logged into Google", user!)
         guard user.authentication.idToken != nil else { return }
         guard user.authentication.accessToken != nil else { return }
@@ -44,16 +44,16 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
+        
         Auth.auth().signIn(with: credential, completion: {(user,error) in
             if error != nil {
                 // Couldn't sign in
                 self.showError(error: error!)
-            }
-            else {
+            }else {
                 //if everything okey go to MapView
                 self.goToMaps()
-            }})
-        goToMaps()
+            }
+        })
     }
     
     @IBAction func loginButton(_ sender: Any) {
@@ -68,8 +68,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
             if error != nil {
                 // Couldn't sign in
                 self.showError(error: error!)
-            }
-            else {
+            }else {
                 //if everything okey go to MapView
                 self.goToMaps()
             }
@@ -83,11 +82,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     
     func goToMaps(){
         
-        let mapsView = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.mapsViewController) as? MapsViewController
+        let tabBarView = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.tabBarViewController) as? UITabBarController
         
-        self.view.window?.rootViewController = mapsView
+        self.view.window?.rootViewController = tabBarView
         self.view.window?.makeKeyAndVisible()
     }
-    
 }
 

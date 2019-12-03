@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var gmailLabel: UILabel!
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
        //valuesOfFirebase()
@@ -23,17 +24,7 @@ class ProfileViewController: UIViewController {
     }
     
     func valuesOfFirebase(){
-       let db = Firestore.firestore().collection("users").document()
-        db.getDocument{(document,error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-            } else {
-                print("Document does not exist")
-            }
-            
-            
-        }
+       
     }
     
     @IBAction func didTapLogOut(_ sender: UIButton) {
@@ -46,4 +37,5 @@ class ProfileViewController: UIViewController {
             print ("Error signing out: \(signOutError.localizedDescription)")
         }
     }
+       
 }

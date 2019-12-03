@@ -12,7 +12,7 @@ struct Constants {
     
     struct Storyboard {
         
-        static let mapsViewController = "Maps"
+        static let tabBarViewController = "TabBarVC"
         
     }
     

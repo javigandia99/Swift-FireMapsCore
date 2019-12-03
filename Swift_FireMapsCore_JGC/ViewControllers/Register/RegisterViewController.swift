@@ -64,9 +64,9 @@ class RegisterViewController: UIViewController {
         let error = validateFields()
         
         if error != nil {
-            
             // There's something wrong with the fields, show error message
-            self.showError(error: error!)
+            self.errorLabel.text = error
+            self.errorLabel.alpha = 1
         }
         else {
             
@@ -76,21 +76,20 @@ class RegisterViewController: UIViewController {
             let password = passwordTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             // Create the user
-            Auth.auth().createUser(withEmail: gmail, password: password) { (result, err) in
+            Auth.auth().createUser(withEmail: gmail, password: password) { (result, error) in
                 
                 // Check for errors
                 if error != nil {
-                    
                     // There was an error creating the user
-                    self.showError(error: error as! Error as! String )
+                    self.showError(error: error!)
                 }
                 else {
                     
-                    // User was created successfully, now store the gmsil and name
+                    // User was created successfully, now store the gmail and name
                     self.db.collection("users").addDocument(data: ["gmail":gmail, "name":name, "uid": result!.user.uid ]) { (error) in
                         
                         if error != nil {
-                            self.showError(error: error! as! String)
+                            self.showError(error: error!)
                         }
                     }
                     
@@ -101,16 +100,16 @@ class RegisterViewController: UIViewController {
         }
     }
     
-    func showError(error:String){
-        self.errorLabel.text = error
+    func showError(error:Error){
+        self.errorLabel.text = error.localizedDescription
         self.errorLabel.alpha = 1
     }
     
     func goToMaps(){
         
-        let mapsView = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.mapsViewController) as? MapsViewController
+        let tabBarView = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.tabBarViewController) as? UITabBarController
         
-        self.view.window?.rootViewController = mapsView
+        self.view.window?.rootViewController = tabBarView
         self.view.window?.makeKeyAndVisible()
     }
 }
