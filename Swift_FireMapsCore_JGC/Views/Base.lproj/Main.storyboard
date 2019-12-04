@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nK2-cJ-PFd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XAV-oe-khF">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Swift_FireMapsCore_JGC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Swift_FireMapsCore_JGC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,18 +121,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1521.7391304347827" y="195.53571428571428"/>
+            <point key="canvasLocation" x="2431.8840579710145" y="195.53571428571428"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Register-->
         <scene sceneID="Qu3-ZT-dlD">
             <objects>
-                <viewController storyboardIdentifier="Register" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D8m-9Q-gim" customClass="RegisterViewController" customModule="Swift_FireMapsCore_JGC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register" title="Register" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D8m-9Q-gim" customClass="RegisterViewController" customModule="Swift_FireMapsCore_JGC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ses-ni-jMc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="k3V-Bc-po6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cgc-6O-D2H">
                                 <rect key="frame" x="20" y="264" width="374" height="30"/>
@@ -142,6 +142,12 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gmail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JT0-aL-A3E">
                                 <rect key="frame" x="20" y="188" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z5y-r4-rA1">
+                                <rect key="frame" x="20" y="226" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -165,12 +171,6 @@
                                     <action selector="signUpButton:" destination="D8m-9Q-gim" eventType="touchUpInside" id="u9S-fi-wFG"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z5y-r4-rA1">
-                                <rect key="frame" x="20" y="226" width="374" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
@@ -181,7 +181,7 @@
                             <constraint firstItem="e3A-VN-HAs" firstAttribute="trailing" secondItem="JT0-aL-A3E" secondAttribute="trailing" constant="20" id="IZ6-Ny-ny6"/>
                             <constraint firstItem="k3V-Bc-po6" firstAttribute="trailing" secondItem="e3A-VN-HAs" secondAttribute="trailing" id="Izb-Q7-Jeu"/>
                             <constraint firstItem="m2d-5c-qeU" firstAttribute="top" secondItem="Cgc-6O-D2H" secondAttribute="bottom" constant="14" id="Mti-q7-GWt"/>
-                            <constraint firstItem="k3V-Bc-po6" firstAttribute="top" secondItem="e3A-VN-HAs" secondAttribute="top" constant="-88" id="OCK-B3-iEf"/>
+                            <constraint firstItem="k3V-Bc-po6" firstAttribute="top" secondItem="e3A-VN-HAs" secondAttribute="top" id="OCK-B3-iEf"/>
                             <constraint firstItem="e3A-VN-HAs" firstAttribute="bottom" secondItem="k3V-Bc-po6" secondAttribute="bottom" constant="-34" id="Ogi-gp-AI7"/>
                             <constraint firstItem="e3A-VN-HAs" firstAttribute="trailing" secondItem="Cgc-6O-D2H" secondAttribute="trailing" constant="20" id="RY1-6U-F3S"/>
                             <constraint firstItem="JT0-aL-A3E" firstAttribute="top" secondItem="e3A-VN-HAs" secondAttribute="top" constant="100" id="Sel-cw-Mwd"/>
@@ -207,12 +207,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ruh-XD-d0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2573.913043478261" y="195.53571428571428"/>
+            <point key="canvasLocation" x="3505.7971014492755" y="195.53571428571428"/>
         </scene>
         <!--Maps-->
         <scene sceneID="QFs-ud-JO4">
             <objects>
-                <viewController storyboardIdentifier="Maps" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MTE-Mf-LES" customClass="MapsViewController" customModule="Swift_FireMapsCore_JGC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Maps" title="Maps" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MTE-Mf-LES" customClass="MapsViewController" customModule="Swift_FireMapsCore_JGC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rv1-Tl-NdX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -290,12 +290,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDw-xz-yjO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4557.971014492754" y="-230.35714285714283"/>
+            <point key="canvasLocation" x="5468.115942028986" y="-230.35714285714283"/>
         </scene>
         <!--Profile-->
         <scene sceneID="fsq-h2-Lsh">
             <objects>
-                <viewController id="wFp-Db-YeZ" customClass="ProfileViewController" customModule="Swift_FireMapsCore_JGC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Profile" id="wFp-Db-YeZ" customClass="ProfileViewController" customModule="Swift_FireMapsCore_JGC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2wt-EM-Yhr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,26 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ny4-0F-3Hb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4557.971014492754" y="438.61607142857139"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="QH4-em-sLY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nK2-cJ-PFd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JM7-nF-TQN">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HCL-Gu-7A5"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dHB-To-rl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="713" y="196"/>
+            <point key="canvasLocation" x="5468.115942028986" y="438.61607142857139"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TYT-0A-AuD">
@@ -419,7 +400,24 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KI1-bv-Vb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3573.913043478261" y="195.53571428571428"/>
+            <point key="canvasLocation" x="4484.057971014493" y="195.53571428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hQA-NV-GBU">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationC" automaticallyAdjustsScrollViewInsets="NO" id="XAV-oe-khF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b4P-dY-qGj">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="DxG-to-oie"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h4h-qI-jIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1521.7391304347827" y="195.53571428571428"/>
         </scene>
     </scenes>
     <resources>

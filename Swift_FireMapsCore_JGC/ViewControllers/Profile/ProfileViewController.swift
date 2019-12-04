@@ -16,27 +16,37 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var gmailLabel: UILabel!
     
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //valuesOfFirebase()
+        valuesOfFirebase()
         
     }
     
     func valuesOfFirebase(){
-        
+            db.collection("users").whereField("gmail", isEqualTo: "qwerty@qwerty.com").getDocuments() { (querySnapshot, error) in
+                if let error = error {
+                    print("Error getting documents: \(error)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                    }
+                }
+        }
     }
     
     @IBAction func didTapLogOut(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()
             
-            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.loginViewController)
-            let appDelegate = UIApplication.shared.delegate
-            appDelegate?.window??.rootViewController = loginViewController
-            appDelegate?.window??.makeToast("log Out Succesfull!!")
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
+        let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.loginViewController)
+        let appDelegate = UIApplication.shared.delegate
+        appDelegate?.window??.rootViewController = loginViewController
+        appDelegate?.window??.makeToast("log Out Succesfull!!")
+        
     }
 }
