@@ -21,18 +21,13 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //set error label invisible
         errorLabel.alpha = 0
         
     }
     
-    func makeRegister(){
-        let registerDocument = db.collection("users").document()
-        registerDocument.setData(["gmail":"\(String(describing: gmailTxt.text))","name":"\(String(describing: nameTxt.text))","password":"\(String(describing: passwordTxt.text))"])
-    }
-    
     // Check the fields and validate that the data is correct. If everything is correct, this method returns nil. Otherwise, it returns the error message
     func validateFields() -> String? {
-        
         // Check that all fields are filled in
         if gmailTxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             nameTxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -59,7 +54,6 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func signUpButton(_ sender: Any) {
-        
         // Validate the fields
         let error = validateFields()
         
@@ -69,7 +63,6 @@ class RegisterViewController: UIViewController {
             self.errorLabel.alpha = 1
         }
         else {
-            
             // Create cleaned versions of the data
             let gmail = gmailTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let name = nameTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -77,22 +70,18 @@ class RegisterViewController: UIViewController {
             
             // Create the user
             Auth.auth().createUser(withEmail: gmail, password: password) { (result, error) in
-                
                 // Check for errors
                 if error != nil {
                     // There was an error creating the user
                     self.showError(error: error!)
                 }
                 else {
-                    
                     // User was created successfully, now store the gmail and name
-                    self.db.collection("users").addDocument(data: ["gmail":gmail, "name":name, "uid": result!.user.uid ]) { (error) in
-                        
+                    self.db.collection("users").document(result!.user.uid).setData(["gmail" : gmail, "name":name]){ (error) in
                         if error != nil {
                             self.showError(error: error!)
                         }
                     }
-                    
                     // Transition to the Maps screen
                     self.goToMaps()
                 }
@@ -106,7 +95,6 @@ class RegisterViewController: UIViewController {
     }
     
     func goToMaps(){
-        
         let tabBarView = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.tabBarViewController) as? UITabBarController
         
         self.view.window?.rootViewController = tabBarView

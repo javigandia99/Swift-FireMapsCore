@@ -16,7 +16,6 @@ extension Users {
         return NSFetchRequest<Users>(entityName: "Users")
     }
 
-    @NSManaged public var gmail: String?
-    @NSManaged public var name: String?
+    @NSManaged public var id: String?
 
 }

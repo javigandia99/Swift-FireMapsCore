@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Users+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Users+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Swift_FireMapsCore_JGC.xcodeproj">
    </FileRef>
    <FileRef

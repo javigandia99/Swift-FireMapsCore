@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D0B01AE239530E600ED66FC /* Swift_FireMapsCore_JGC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B01AC239530E600ED66FC /* Swift_FireMapsCore_JGC.xcdatamodeld */; };
 		1D0E118423957F5F00AAB940 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0E118323957F5F00AAB940 /* ProfileViewController.swift */; };
+		1D101A33239827BC0019EAF9 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D101A32239827BC0019EAF9 /* PersistenceService.swift */; };
 		1D5F968F238F0487001A35B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F968E238F0487001A35B5 /* AppDelegate.swift */; };
 		1D5F9691238F0487001A35B5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5F9690238F0487001A35B5 /* LoginViewController.swift */; };
 		1D5F9694238F0487001A35B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D5F9692238F0487001A35B5 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		1D0B01AD239530E600ED66FC /* Swift_FireMapsCore_JGC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Swift_FireMapsCore_JGC.xcdatamodel; sourceTree = "<group>"; };
 		1D0E118323957F5F00AAB940 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		1D101A32239827BC0019EAF9 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		1D319732F8FC30E4163D7BE3 /* Pods_Swift_FireMapsCore_JGC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift_FireMapsCore_JGC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D5F968B238F0487001A35B5 /* Swift_FireMapsCore_JGC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_FireMapsCore_JGC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D5F968E238F0487001A35B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		1D5F96A0238F04CB001A35B5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1D101A32239827BC0019EAF9 /* PersistenceService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D66C35C2394537800D86B3D /* Constants.swift in Sources */,
+				1D101A33239827BC0019EAF9 /* PersistenceService.swift in Sources */,
 				1D5F96A9238F0591001A35B5 /* MapsViewController.swift in Sources */,
 				1D5F9691238F0487001A35B5 /* LoginViewController.swift in Sources */,
 				1D5F968F238F0487001A35B5 /* AppDelegate.swift in Sources */,

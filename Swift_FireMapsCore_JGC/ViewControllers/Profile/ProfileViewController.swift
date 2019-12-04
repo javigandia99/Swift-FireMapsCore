@@ -9,37 +9,56 @@
 import UIKit
 import Firebase
 import Toast_Swift
+import GoogleSignIn
+import CoreData
 
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var gmailLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
     
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        valuesOfFirebase()
+        getOfFirebase()
+        getOfCoreData()
         
     }
     
-    func valuesOfFirebase(){
-            db.collection("users").whereField("gmail", isEqualTo: "qwerty@qwerty.com").getDocuments() { (querySnapshot, error) in
-                if let error = error {
-                    print("Error getting documents: \(error)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
-                    }
+    func getOfFirebase(){
+        //take email of the current user to find email and name from firebase
+        let actualGmail = Auth.auth().currentUser?.email
+        db.collection("users").whereField("gmail", isEqualTo: actualGmail! ).getDocuments() { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    //let valueGmail = document.data().index(forKey: "gmail")
+                    //let valueName = document.data().index(forKey: "name")
+                    // let dicgmail =  document.data()[valueGmail!].value as? String
+                    // self.gmailLabel.text = dicgmail
+                    //self.nameLabel.text = document.data()[valueName!].value as? String
                 }
+            }
         }
+    }
+    func getOfCoreData(){
+        guard let users = try! PersistenceService.context.fetch(Users.fetchRequest()) as? [Users]
+            else { return }
+        users.forEach({
+            idLabel.text = $0.id
+        })
     }
     
     @IBAction func didTapLogOut(_ sender: UIButton) {
         do {
             try Auth.auth().signOut()
-            
+            GIDSignIn.sharedInstance()?.signOut()
+            PersistenceService.deleteAllCodesRecords()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }

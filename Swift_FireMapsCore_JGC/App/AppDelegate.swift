@@ -46,11 +46,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        Auth.auth().signIn(with: credential, completion: {(user,error) in
+         let gmail = user.profile.email
+         let name = user.profile.name
+        
+        
+        Auth.auth().signIn(with: credential, completion: {(result,error) in
             if (error) != nil {
                 print("Google Authentification Fail")
             } else {
                 print("Google Authentification Success")
+                let db = Firestore.firestore()
+                db.collection("users").document(result!.user.uid).setData(["gmail" : gmail!, "name":name!]){ (error) in
+                    if error != nil {
+                        print("Google Insert in Cloud Firestore Fail")
+                    }
+                }
                 
                 let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
                 let tabBarView = mainStoryBoard.instantiateViewController(withIdentifier: Constants.Storyboard.tabBarViewController) as? UITabBarController
@@ -62,8 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
+        GIDSignIn.sharedInstance()?.disconnect()
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
