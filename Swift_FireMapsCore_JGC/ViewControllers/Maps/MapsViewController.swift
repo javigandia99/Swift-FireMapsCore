@@ -55,7 +55,6 @@ class MapsViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
@@ -151,8 +150,7 @@ class MapsViewController: UIViewController, UISearchBarDelegate {
         
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
-    {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         //Ignoring user
         UIApplication.shared.beginIgnoringInteractionEvents()
         

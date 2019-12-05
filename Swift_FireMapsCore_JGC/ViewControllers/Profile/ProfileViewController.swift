@@ -23,9 +23,10 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameLabel.text = ""
+        gmailLabel.text = ""
         getOfFirebase()
         getOfCoreData()
-        
     }
     
     func getOfFirebase(){
@@ -37,11 +38,16 @@ class ProfileViewController: UIViewController {
             } else {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
-                    //let valueGmail = document.data().index(forKey: "gmail")
-                    //let valueName = document.data().index(forKey: "name")
-                    // let dicgmail =  document.data()[valueGmail!].value as? String
-                    // self.gmailLabel.text = dicgmail
-                    //self.nameLabel.text = document.data()[valueName!].value as? String
+                    let valueName = document.data().index(forKey: "name")
+                    let dicname = document.data()[valueName!].value as! String
+                    print(dicname)
+                    
+                    let valueGmail = document.data().index(forKey: "gmail")
+                    let dicgmail =  document.data()[valueGmail!].value as! String
+                    print(dicgmail)
+                    
+                    self.gmailLabel.text = dicgmail
+                    self.nameLabel.text  = dicname
                 }
             }
         }
@@ -54,7 +60,7 @@ class ProfileViewController: UIViewController {
         })
     }
     
-    @IBAction func didTapLogOut(_ sender: UIButton) {
+    @IBAction func didTapSignOut(_ sender: UIBarButtonItem) {
         do {
             try Auth.auth().signOut()
             GIDSignIn.sharedInstance()?.signOut()
@@ -68,4 +74,5 @@ class ProfileViewController: UIViewController {
         appDelegate?.window??.makeToast("log Out Succesfull!!")
         
     }
+        
 }

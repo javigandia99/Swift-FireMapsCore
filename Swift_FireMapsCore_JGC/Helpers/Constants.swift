@@ -13,7 +13,7 @@ struct Constants {
     struct Storyboard {
         
         static let tabBarViewController = "TabBarVC"
-        static let loginViewController = "LoginVC"
+        static let loginViewController = "NavLoginVC"
         
     }
     
