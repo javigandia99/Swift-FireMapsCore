@@ -64,8 +64,8 @@ class RegisterViewController: UIViewController {
             // There's something wrong with the fields, show error message
             self.errorLabel.text = error
             self.errorLabel.alpha = 1
-        }
-        else {
+            
+        }else {
             // Create cleaned versions of the data
             let gmail = gmailTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let name = nameTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)

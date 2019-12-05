@@ -46,9 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-         let gmail = user.profile.email
-         let name = user.profile.name
-        
+        let gmail = user.profile.email
+        let name = user.profile.name
         
         Auth.auth().signIn(with: credential, completion: {(result,error) in
             if (error) != nil {
@@ -61,13 +60,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                         print("Google Insert in Cloud Firestore Fail")
                     }
                 }
-               
+                
                 let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
                 let tabBarView = mainStoryBoard.instantiateViewController(withIdentifier: Constants.Storyboard.tabBarViewController) as? UITabBarController
                 
                 let appDelegate = UIApplication.shared.delegate
                 appDelegate?.window??.rootViewController = tabBarView
- 
+                
             }
         })
     }

@@ -28,11 +28,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        //if user is logged go to inside app
         //AutoLogin with Firebase()
         //if Auth.auth().currentUser != nil {
-          // goToMaps()
+        // goToMaps()
         //}
+        //auto login with coreData
         autoLogin()
     }
     
@@ -83,7 +83,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         let user = NSManagedObject(entity: idEntity, insertInto: persistanceServices.context)
         let id = Auth.auth().currentUser?.uid
         user.setValue(id!, forKey: "id")
-       
+        
         _ =  self.persistanceServices.saveContext()
     }
     
@@ -99,7 +99,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
             for user in result as! [NSManagedObject] {
                 id = user.value(forKey: "id") as! String
             }
-            print("------------------  \(id)   --------")
             if (!id.isEmpty){
                 self.goToMaps()
             }

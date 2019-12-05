@@ -76,5 +76,5 @@ class ProfileViewController: UIViewController {
         appDelegate?.window??.makeToast("log Out Succesfull!!")
         
     }
-        
+    
 }
