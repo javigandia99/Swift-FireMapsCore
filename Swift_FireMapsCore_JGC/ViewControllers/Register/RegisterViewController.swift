@@ -9,6 +9,7 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class RegisterViewController: UIViewController {
     
@@ -16,6 +17,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var nameTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+    
+    let persistanceServices = PersistenceService.self
     
     let db = Firestore.firestore()
     
@@ -82,11 +85,22 @@ class RegisterViewController: UIViewController {
                             self.showError(error: error!)
                         }
                     }
+                    //save id in coreData to make auto login 
+                    self.saveCoreData()
                     // Transition to the Maps screen
                     self.goToMaps()
                 }
             }
         }
+    }
+    
+    func saveCoreData(){
+        let idEntity = NSEntityDescription.entity(forEntityName: "Users", in: persistanceServices.context)!
+        let user = NSManagedObject(entity: idEntity, insertInto: persistanceServices.context)
+        let id = Auth.auth().currentUser?.uid
+        user.setValue(id!, forKey: "id")
+        
+        _ =  self.persistanceServices.saveContext()
     }
     
     func showError(error:Error){

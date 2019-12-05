@@ -23,18 +23,17 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0
-        
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        // Automatically sign in the user.
-        // GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         GIDSignIn.sharedInstance().delegate = self
         
-        //CoreData
-        //let fetchRequest: NSFetchRequest<Users> = Users.fetchRequest()
-        //do{
-        //let user = try PersistenceService.context.fetch(fetchRequest)
-        // self.user = user
-        //}catch{}
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        //if user is logged go to inside app
+        //AutoLogin with Firebase()
+        //if Auth.auth().currentUser != nil {
+          // goToMaps()
+        //}
+        autoLogin()
     }
     
     @IBAction func loginButton(_ sender: Any) {
@@ -48,7 +47,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
                 // Couldn't sign in
                 self.showError(error: error!)
             }else {
-                
+                //save id in coreData
                 self.saveCoreData()
                 //if everything okey go to MapView
                 self.goToMaps()
@@ -61,8 +60,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
             // Couldn't sign in
             self.showError(error: error!)
         }else{
-            
-            self.saveCoreData()
+            // This func is to save data but he crash
+            //self.saveCoreData()
             self.goToMaps()
         }
     }
@@ -80,10 +79,32 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     }
     
     func saveCoreData(){
-        let user = Users(context: PersistenceService.context)
-        user.id = Auth.auth().currentUser?.uid
-        print(user.id!)
-        self.persistanceServices.saveContext()
+        let idEntity = NSEntityDescription.entity(forEntityName: "Users", in: persistanceServices.context)!
+        let user = NSManagedObject(entity: idEntity, insertInto: persistanceServices.context)
+        let id = Auth.auth().currentUser?.uid
+        user.setValue(id!, forKey: "id")
+       
+        _ =  self.persistanceServices.saveContext()
+    }
+    
+    func autoLogin(){
+        //CoreData, autologin only with email
+        // GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        var id: String = ""
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Users")
+        do{
+            
+            let result = try persistanceServices.context.fetch(fetchRequest)
+            
+            for user in result as! [NSManagedObject] {
+                id = user.value(forKey: "id") as! String
+            }
+            print("------------------  \(id)   --------")
+            if (!id.isEmpty){
+                self.goToMaps()
+            }
+        }catch{
+            print("error autologin")
+        }
     }
 }
-

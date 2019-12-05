@@ -31,7 +31,10 @@ class ProfileViewController: UIViewController {
     
     func getOfFirebase(){
         //take email of the current user to find email and name from firebase
-        let actualGmail = Auth.auth().currentUser?.email
+        var actualGmail = Auth.auth().currentUser?.email
+        if actualGmail == nil{
+            actualGmail = "powershoot19@gmail.com"
+        }
         db.collection("users").whereField("gmail", isEqualTo: actualGmail! ).getDocuments() { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
@@ -40,11 +43,9 @@ class ProfileViewController: UIViewController {
                     print("\(document.documentID) => \(document.data())")
                     let valueName = document.data().index(forKey: "name")
                     let dicname = document.data()[valueName!].value as! String
-                    print(dicname)
                     
                     let valueGmail = document.data().index(forKey: "gmail")
                     let dicgmail =  document.data()[valueGmail!].value as! String
-                    print(dicgmail)
                     
                     self.gmailLabel.text = dicgmail
                     self.nameLabel.text  = dicname
@@ -52,6 +53,7 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+    
     func getOfCoreData(){
         guard let users = try! PersistenceService.context.fetch(Users.fetchRequest()) as? [Users]
             else { return }

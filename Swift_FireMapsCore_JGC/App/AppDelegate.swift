@@ -61,12 +61,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                         print("Google Insert in Cloud Firestore Fail")
                     }
                 }
-                
+               
                 let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
                 let tabBarView = mainStoryBoard.instantiateViewController(withIdentifier: Constants.Storyboard.tabBarViewController) as? UITabBarController
                 
                 let appDelegate = UIApplication.shared.delegate
                 appDelegate?.window??.rootViewController = tabBarView
+ 
             }
         })
     }
