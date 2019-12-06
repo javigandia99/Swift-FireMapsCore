@@ -14,7 +14,6 @@ import CoreData
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var gmailLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!

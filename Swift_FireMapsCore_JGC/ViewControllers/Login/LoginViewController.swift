@@ -60,9 +60,31 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
             // Couldn't sign in
             self.showError(error: error!)
         }else{
-            // This func is to save data but he crash
-            //self.saveCoreData()
-            self.goToMaps()
+            
+            guard user.authentication.idToken != nil else { return }
+            guard user.authentication.accessToken != nil else { return }
+            
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+            let gmail = user.profile.email
+            let name = user.profile.name
+            
+            Auth.auth().signIn(with: credential, completion: {(result,error) in
+                if (error) != nil {
+                    print("Google Authentification Fail")
+                } else {
+                    print("Google Authentification Success")
+                    let db = Firestore.firestore()
+                    db.collection("users").document(result!.user.uid).setData(["gmail" : gmail!, "name":name!]){ (error) in
+                        if error != nil {
+                            print("Google Insert in Cloud Firestore Fail")
+                        }
+                        self.saveCoreData()
+                        self.goToMaps()
+                    }
+                }
+            })
         }
     }
     
